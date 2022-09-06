@@ -1,11 +1,15 @@
 ## 動機
 銜接期不知道要寫什麼就先隨便寫寫(連Naming都很醜的那種)
+
 拿來複習 .Net Framework MVC
+
 還有學習使用客製Authorize Filter搭配Session來做登入驗證
 
 ## 使用到的技術
 前端：Razor、jQuery、Ajax
+
 後端：C#(.Net Framework MVC)
+
 DataBase：Sql Server
 
 ## Files
