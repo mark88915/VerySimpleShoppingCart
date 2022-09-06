@@ -1,0 +1,51 @@
+﻿@model IEnumerable<shoppingCart.Models.Product.Product>
+
+@{
+    var userId = Session["UserId"].ToString();
+}
+
+<h2>歡迎 @userId</h2>
+
+@Html.ActionLink("查看購物車", "ShoppingCart", new { }, new { @class = "btn btn-default" })
+@Html.ActionLink("查看購買歷史", "PurchaseHistory", new { }, new { @class = "btn btn-default" })
+
+
+@using (Html.BeginForm("Logout", "Client", FormMethod.Post, new { id = "LogoutForm" }))
+{
+    <input type="submit" value="登出" class="btn btn-default" id="Logout" />
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductInStock)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductInStock)
+            </td>
+            <td>
+                <button class="btn btn-default AddProductToCart" id="@item.ProductId">加入購物車</button>
+                @Html.ActionLink("購買", "Purchase", new { productId = item.ProductId }, htmlAttributes: new { @class = "btn btn-default" })
+            </td>
+        </tr>
+    }
+
+</table>
